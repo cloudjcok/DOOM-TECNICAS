@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplicación de Matrices</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .matrix input {
+            width: 40px;
+            text-align: center;
+            margin: 5px;
+            padding: 5px;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .result table {
+            margin: auto;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .result th, .result td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Multiplicación de Matrices</h2>
+
+        <div class="matrix">
+            <label>A11: <input type="number" id="a11"></label>
+            <label>A12: <input type="number" id="a12"></label><br>
+            <label>A21: <input type="number" id="a21"></label>
+            <label>A22: <input type="number" id="a22"></label><br><br>
+            <label>B11: <input type="number" id="b11"></label>
+            <label>B12: <input type="number" id="b12"></label><br>
+            <label>B21: <input type="number" id="b21"></label>
+            <label>B22: <input type="number" id="b22"></label>
+        </div>
+
+        <button onclick="multiplicarMatrices()">Calcular Multiplicación</button>
+
+        <div class="result" id="resultado"></div>
+    </div>
+
+    <script>
+        function multiplicarMatrices() {
+            const a11 = parseInt(document.getElementById('a11').value) || 0;
+            const a12 = parseInt(document.getElementById('a12').value) || 0;
+            const a21 = parseInt(document.getElementById('a21').value) || 0;
+            const a22 = parseInt(document.getElementById('a22').value) || 0;
+            const b11 = parseInt(document.getElementById('b11').value) || 0;
+            const b12 = parseInt(document.getElementById('b12').value) || 0;
+            const b21 = parseInt(document.getElementById('b21').value) || 0;
+            const b22 = parseInt(document.getElementById('b22').value) || 0;
+
+            const resultado11 = a11 * b11 + a12 * b21;
+            const resultado12 = a11 * b12 + a12 * b22;
+            const resultado21 = a21 * b11 + a22 * b21;
+            const resultado22 = a21 * b12 + a22 * b22;
+
+            const html = `
+                <h3>Resultado de la Multiplicación</h3>
+                <table>
+                    <tr><th>${resultado11}</th><th>${resultado12}</th></tr>
+                    <tr><th>${resultado21}</th><th>${resultado22}</th></tr>
+                </table>
+            `;
+
+            document.getElementById('resultado').innerHTML = html;
+        }
+    </script>
+</body>
+</html>
